@@ -1,0 +1,400 @@
+
+<div ng-controller="ReuseController" class="md-padding checkboxdemoSyncing" ng-cloak="" style="min-height:270px" ng-app="app.reuse">
+  <p style="margin-bottom: 0;font-size: 23px;"> <code>Checkboxes:-</code></p>&nbsp;
+  <div layout="row" layout-wrap="">
+    <div flex="100" flex-gt-sm="50" layout="column">
+      <div>
+
+        <fieldset class="standard">
+          <legend>Using md-checkbox with ng-checked </legend>
+          <div layout="row" layout-wrap="" flex="">
+            <div flex="50" ng-repeat="item in items">
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                {{ item }} <span ng-if="exists(item, selected)">selected</span>
+              </md-checkbox>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <div flex="100" flex-gt-sm="50" layout="column">
+      <div>
+        <fieldset class="standard">
+          <legend>Using input type="checkbox"</legend>
+          <div layout="row" layout-wrap="" flex="">
+            <div ng-repeat="item in items" class="standard" flex="50">
+              <label>
+                <input type="checkbox" ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                {{ item }}
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <div flex="100">
+      <h2 class="md-title">Selected Items</h2>
+      <code style="display: block; padding: 8px;">{{selected | json}}</code>
+    </div>
+  </div>
+
+ <!--radio buttons-->
+  <p style="margin-bottom: 0;font-size: 23px;"> <code>Radio buttons:-</code></p>
+  <div class="radioButtondemoBasicUsage" ng-app="MyApp">
+    <form ng-submit="submit()">
+      <p>Selected Value: <span class="radioValue">{{ data.group1 }}</span> </p>
+
+      <md-radio-group ng-model="data.group1">
+
+        <md-radio-button value="Apple" class="md-primary">Apple</md-radio-button>
+        <md-radio-button value="Banana"> Banana </md-radio-button>
+        <md-radio-button value="Mango">Mango</md-radio-button>
+
+      </md-radio-group>
+
+      <hr>
+
+      <p>Selected Value: <span class="radioValue">{{ data.group2 }}</span></p>
+
+      <md-radio-group ng-model="data.group2" class="md-primary">
+
+        <md-radio-button ng-repeat="d in radioData" ng-value="d.value" ng-disabled=" d.isDisabled " ng-class="{'md-align-top-left': $index==1}">
+          {{ d.label }}<br>
+          <span class="ipsum" ng-if="$index == 1">
+            Duis placerat lectus et justo mollis, nec sodales orci congue. Vestibulum semper non urna ac suscipit.
+            Vestibulum tempor, ligula id laoreet hendrerit, massa augue iaculis magna,
+            sit amet dapibus tortor ligula non nibh.
+          </span>
+
+        </md-radio-button>
+
+      </md-radio-group>
+
+      <p>
+        <md-button class="md-raised" ng-click="addItem()" type="button">Add</md-button>
+        <md-button class="md-raised" ng-click="removeItem()" type="button">Remove</md-button>
+      </p>
+
+      <hr>
+
+      <p style="margin-bottom: 0;">Graphic radio buttons need to be labeled with the <code>aria-label</code> attribute.</p>
+      <p style="margin-top: 0;">Selected Avatar: <span class="radioValue">{{ data.group3 }}</span></p>
+
+      <md-radio-group ng-model="data.group3">
+        <md-radio-button ng-repeat="it in avatarData" ng-value="it.value" aria-label="{{it.title}}">
+          <md-icon md-svg-icon="{{it.id}}"></md-icon>
+        </md-radio-button>
+      </md-radio-group>
+    </form>
+  </div>
+  <div style="text-decoration:underline">Radio buttons:</div>
+  <div class="radioButtondemoBasicUsage" ng-app="app.reuse">
+    <form ng-submit="submit()">
+      <p>Selected Value: <span class="radioValue">{{ data.group1 }}</span> </p>
+
+      <md-radio-group ng-model="data.group1">
+
+        <md-radio-button value="Apple" class="md-primary">Apple</md-radio-button>
+        <md-radio-button value="Banana"> Banana </md-radio-button>
+        <md-radio-button value="Mango">Mango</md-radio-button>
+
+      </md-radio-group>
+
+      <hr>
+
+      <p>Selected Value: <span class="radioValue">{{ data.group2 }}</span></p>
+
+      <md-radio-group ng-model="data.group2" class="md-primary">
+
+        <md-radio-button ng-repeat="d in radioData" ng-value="d.value" ng-disabled=" d.isDisabled " ng-class="{'md-align-top-left': $index==1}">
+          {{ d.label }}<br>
+          <span class="ipsum" ng-if="$index == 1">
+            Duis placerat lectus et justo mollis, nec sodales orci congue. Vestibulum semper non urna ac suscipit.
+            Vestibulum tempor, ligula id laoreet hendrerit, massa augue iaculis magna,
+            sit amet dapibus tortor ligula non nibh.
+          </span>
+
+        </md-radio-button>
+
+      </md-radio-group>
+
+      <p>
+        <md-button class="md-raised" ng-click="addItem()" type="button">Add</md-button>
+        <md-button class="md-raised" ng-click="removeItem()" type="button">Remove</md-button>
+      </p>
+
+      <hr>
+    </form>
+  </div>
+
+  <!--buttons-->
+  <p style="margin-bottom: 0;font-size: 23px;"> <code>Buttons:-</code></p>&nbsp;
+  <div class="buttondemoBasicUsage">
+    <md-content>
+
+      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+        <md-button>{{title1}}</md-button>
+        <md-button md-no-ink="" class="md-primary">Primary (md-noink)</md-button>
+        <md-button ng-disabled="true" class="md-primary">Disabled</md-button>
+        <md-button class="md-warn">{{title4}}</md-button>
+        <div class="label">Flat</div>
+      </section>
+
+      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+        <md-button class="md-raised">Button</md-button>
+        <md-button class="md-raised md-primary">Primary</md-button>
+        <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>
+        <md-button class="md-raised md-warn">Warn</md-button>
+        <div class="label">Raised</div>
+      </section>
+
+      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+        <md-button class="md-fab" aria-label="Eat cake">
+          <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
+        </md-button>
+
+        <md-button class="md-fab md-primary" aria-label="Use Android">
+          <md-icon md-svg-src="img/icons/android.svg"></md-icon>
+        </md-button>
+
+        <md-button class="md-fab" ng-disabled="true" aria-label="Comment">
+          <md-icon md-svg-src="img/icons/ic_comment_24px.svg"></md-icon>
+        </md-button>
+
+        <md-button class="md-fab md-primary md-hue-2" aria-label="Profile">
+          <md-icon md-svg-src="img/icons/ic_people_24px.svg"></md-icon>
+        </md-button>
+
+        <md-button class="md-fab md-mini" aria-label="Eat cake">
+          <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
+        </md-button>
+
+        <md-button class="md-fab md-mini md-primary" aria-label="Use Android">
+          <md-icon md-svg-src="img/icons/android.svg" style="color: greenyellow;"></md-icon>
+        </md-button>
+        <div class="label">FAB</div>
+      </section>
+
+      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+        <md-button ng-href="{{googleUrl}}" target="_blank">Default Link</md-button>
+        <md-button class="md-primary" ng-href="{{googleUrl}}" target="_blank">Primary Link</md-button>
+
+        <md-button>Default Button</md-button>
+        <div class="label">Link vs. Button</div>
+      </section>
+
+      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+        <md-button class="md-primary md-hue-1">Primary Hue 1</md-button>
+        <md-button class="md-warn md-raised md-hue-2">Warn Hue 2</md-button>
+        <md-button class="md-accent">Accent</md-button>
+        <md-button class="md-accent md-raised md-hue-1">Accent Hue 1</md-button>
+        <div class="label">Themed</div>
+      </section>
+
+      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+        <md-button class="md-icon-button md-primary" aria-label="Settings">
+          <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button md-accent" aria-label="Favorite">
+          <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="More">
+          <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
+        </md-button>
+        <md-button href="http://google.com" title="Launch Google.com in new window" target="_blank" ng-disabled="true" aria-label="Google.com" class="md-icon-button launch">
+          <md-icon md-svg-icon="img/icons/launch.svg"></md-icon>
+        </md-button>
+        <div class="label">Icon Button</div>
+      </section>
+    </md-content>
+  </div>
+<!--input boxes-->
+  <p style="margin-bottom: 0;font-size: 23px;"> <code>Input boxes with validations:-</code></p>&nbsp;
+  <div  layout="column" ng-cloak="" class="inputdemoErrorsAdvanced" >
+
+    <md-content layout-padding="">
+      <form name="userForm">
+        <div layout="row" layout-xs="column" layout-sm="column" layout-align="space-between center">
+          <div flex-gt-sm="80">
+            <p>
+              The <code>md-input-container</code> gives you the flexibility to display your messages
+              using many standard angular directives.
+            </p>
+
+            <p>
+              For instance, toggle the switch
+
+              <span hide-xs="" hide-sm="">to the right</span>
+              <span hide-gt-sm="">below</span>
+
+              to see the messages switch between some custom hints, and the actual error messages.
+              Note that some of the <code>ng-messages</code> containers use <code>ngIf</code> while
+              others use <code>ng-show</code> or <code>ng-hide</code>.
+            </p>
+          </div>
+
+          <md-input-container>
+            <md-switch ng-model="showHints">Showing {{showHints ? "Hints" : "Errors"}}</md-switch>
+          </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Name</label>
+            <input md-maxlength="30" required="" name="name" ng-model="user.name">
+
+            <div class="hint" ng-if="showHints">Tell us what we should call you!</div>
+
+            <div ng-messages="userForm.name.$error" ng-if="!showHints">
+              <div ng-message="required">Name is required.</div>
+              <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+            </div>
+          </md-input-container>
+
+          <div flex="5" hide-xs="" hide-sm="">
+            <!-- Spacer //-->
+          </div>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Social Security Number</label>
+            <input name="social" ng-model="user.social" ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/">
+
+            <div class="hint" ng-if="showHints">###-##-####</div>
+
+            <div ng-messages="userForm.social.$error" ng-if="!showHints">
+              <div ng-message="pattern">###-##-#### - Please enter a valid SSN.</div>
+            </div>
+          </md-input-container>
+
+        </div>
+
+        <div layout-gt-sm="row">
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Email</label>
+            <input name="email" ng-model="user.email" required="" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/">
+
+            <div class="hint" ng-show="showHints">How can we reach you?</div>
+
+            <div ng-messages="userForm.email.$error" ng-hide="showHints">
+              <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                Your email must be between 10 and 100 characters long and look like an e-mail address.
+              </div>
+            </div>
+          </md-input-container>
+
+          <div flex="5" hide-xs="" hide-sm="">
+            <!-- Spacer //-->
+          </div>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Phone Number</label>
+            <input name="phone" ng-model="user.phone" ng-pattern="/^[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}$/">
+
+            <div class="hint" ng-show="showHints">(###) ###-####</div>
+
+            <div ng-messages="userForm.phone.$error" ng-hide="showHints">
+              <div ng-message="pattern">(###) ###-#### - Please enter a valid phone number.</div>
+            </div>
+          </md-input-container>
+
+        </div>
+
+      </form>
+    </md-content>
+
+  </div>
+
+</div>
+<style>
+  /*checkbox start*/
+  .checkboxdemoSyncing .checkboxDemo1 div {
+    clear: both; }
+
+  .checkboxdemoSyncing legend {
+    color: #3F51B5; }
+
+  .checkboxdemoSyncing legend code {
+    color: #3F51B5;
+    font-weight: normal; }
+
+  .checkboxdemoSyncing p {
+    padding-left: 8px; }
+
+  .checkboxdemoSyncing .info {
+    padding-left: 13px; }
+
+  .checkboxdemoSyncing div.standard {
+    padding: 8px;
+    padding-left: 15px; }
+
+  .checkboxdemoSyncing fieldset.standard {
+    border-style: solid;
+    border-width: 1px;
+    height: 100%; }
+
+  /*checkbox end*/
+
+  /*buttons start*/
+  .buttondemoBasicUsage section {
+    background: #f7f7f7;
+    border-radius: 3px;
+    text-align: center;
+    margin: 1em;
+    position: relative !important;
+    padding-bottom: 10px; }
+
+  .buttondemoBasicUsage md-content {
+    margin-right: 7px; }
+
+  .buttondemoBasicUsage section .md-button {
+    margin-top: 16px;
+    margin-bottom: 16px; }
+
+  .buttondemoBasicUsage .label {
+    position: absolute;
+    bottom: 5px;
+    left: 7px;
+    font-size: 14px;
+    opacity: 0.54; }
+/*buttons end*/
+
+  /*input boxes start*/
+  .inputdemoErrorsAdvanced .hint {
+    position: absolute;
+    left: 2px;
+    right: auto;
+    bottom: 7px;
+
+    font-size: 12px;
+    line-height: 14px;
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+    color: grey; }
+  .inputdemoErrorsAdvanced .hint.ng-hide,
+  .inputdemoErrorsAdvanced .hint.ng-enter,
+  .inputdemoErrorsAdvanced .hint.ng-leave.ng-leave-active {
+    bottom: 26px;
+    opacity: 0; }
+  .inputdemoErrorsAdvanced .hint.ng-leave,
+  .inputdemoErrorsAdvanced .hint.ng-enter.ng-enter-active {
+    bottom: 7px;
+    opacity: 1; }
+
+  body[dir=rtl] .hint {
+    right: 2px;
+    left: auto;
+  }
+  /*input boxes end*/
+
+</style>
+
+
+
+
+
+
+
+
